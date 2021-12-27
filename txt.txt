@@ -1,0 +1,57 @@
+
+     
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit" name="submit">upload</button>
+      </form>
+
+<?php
+if(isset($_POST['submit']))
+{
+    $file=$_FILES['file'];
+
+    $fileName =$FILES['files']['name'];
+    $fileTmpName =$FILES['files']['tmp_name'];
+    $fileSize =$FILES['files']['size'];
+    $fileError =$FILES['files']['error'];
+    $fileType =$FILES['files']['name'];
+    $fileName =$FILES['files']['type']; 
+
+    $fileExt=explode('.',$fileName);
+    $fileActualExt= strtolower(end($fileExt));
+
+    $allowed = array('jpg','jpeg','png','pdf');
+
+    if(in_array($fileActualExt, $allowed))
+    {
+        if($fileError === 0)
+        {
+            if($fileSize<10000000)
+            {
+                $fileName = uniqid('', true).".".$fileActualExt;
+                $fileDestination= 'uploads/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                header("location:index.php?uploadsuccess");
+
+
+            }
+            else
+            {
+                echo "your file is too big!";
+
+            }
+
+        }
+        else
+        {
+            echo "there was an error uploading your files !";
+        }
+
+    }
+    else
+    {
+        echo "you cannot upload file to this type !";
+
+    }
+}
+?>
