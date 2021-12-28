@@ -27,7 +27,7 @@
     border-radius: 0px 0px 10px 10px;
   }
   .input-group {
-    margin: 10px 0px 10px 0px;
+    margin: 20px 0px 20px 0px;
   }
   .input-group label {
     display: block;
@@ -66,3 +66,12 @@
     border: 1px solid #3c763d;
     margin-bottom: 20px;
   }
+  .img
+  {
+    background: #dff0d8;
+    
+    }
+    .img1
+    {
+      background: #dff0d8;
+    }
